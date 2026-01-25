@@ -29,22 +29,22 @@ class WeatherModel {
       icon: json['weather']['icon']??'01d',
       feelsLike:(json['main']['feels_like'] as num).toDouble(),
       humidity:json['main']['humidity']??0,
-      windSpeed:(json[wind][speed]as num).toDouble() ,
+      windSpeed:(json['wind']['speed']as num).toDouble() ,
       pressure:json['main']['pressure']?? 0,
-      dateTime:DateTime.fromMillisecondsSinchEpoch(json['dt']*1000),
+      dateTime:DateTime.fromMicrosecondsSinceEpoch(json['dt']*1000),
     );
   }
 
   WeatherModel copyWith({
-    String? cityName;
-    double? temperature;
-    String? description;
-    String? icon;
-    double? feelsLike;
-    int? humidity;
-    double? windSpeed;
-    int? pressure;
-    DateTime? dateTime;
+    String? cityName,
+    double? temperature,
+    String? description,
+    String? icon,
+    double? feelsLike,
+    int? humidity,
+    double? windSpeed,
+    int? pressure,
+    DateTime? dateTime,
   }) {
     return WeatherModel(
       cityName: cityName ?? this.cityName,
