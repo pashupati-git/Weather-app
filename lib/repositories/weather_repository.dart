@@ -7,6 +7,7 @@ class WeatherRepository {
   final ApiService _apiService=ApiService();
   final LocationService _locationService=LocationService();
 
+  //functions:-
   Future<WeatherModel> getWeatherByCity(String city) async{
     try{
       final data=await _apiService.getCurrentWeather(city);
