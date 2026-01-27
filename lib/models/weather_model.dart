@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class WeatherModel {
   final String cityName;
   final double temperature;
@@ -60,17 +62,18 @@ class WeatherModel {
   }
 }
 
-class ForecastModel{
+//factory constructor
+class ForecastModel {
   final List<WeatherModel> forecasts;
   ForecastModel({required this.forecasts});
-  factory ForecastModel.fromJson(Map<String,dynamic>json){
+  factory ForecastModel.fromJson(Map<String,dynamic> json){
     List<WeatherModel> forecasts=[];
     for(var item in json['list']){
       forecasts.add(WeatherModel.fromJson({
         ...item,
         'name':json['city']['name'],
-      }));
-    }
-    return ForecastModel(forecasts:forecasts);
+  }));
+  }
+    return ForecastModel(forecasts: forecasts);
   }
 }
