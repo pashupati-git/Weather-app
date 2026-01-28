@@ -111,7 +111,7 @@ final currentTemperatureProvider=Provider((ref){
 });
 
 //Provider to get forecast count
-final forecastcountProvider=Provider((ref){
+final forecastCountProvider=Provider((ref){
   final weatherState=ref.watch(weatherNotifierProvider);
   return weatherState.forecast?.forecasts.length??0;
 });
