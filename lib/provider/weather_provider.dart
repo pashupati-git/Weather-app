@@ -30,7 +30,7 @@ class WeatherState {
     );
   }
   //helper getters
-bool get hasError=> errorMessage!=null;
+  bool get hasError=> errorMessage!=null;
   bool get hasData=>currentWeather!=null;
   bool get isInitial=>!isLoading && !hasData && !hasError;
 }
@@ -56,6 +56,7 @@ class WeatherNotifier extends Notifier<WeatherState>{
       final repository=ref.read(weatherRepositoryProvider);
       final currentWeather=await repository.getWeatherByCity(city);
       final forecast=await repository.getForecast(city);
+
       state=WeatherState(
         isLoading:false,
         currentWeather:currentWeather,
@@ -63,6 +64,7 @@ class WeatherNotifier extends Notifier<WeatherState>{
         errorMessage:null,
       );
     }catch(e){
+
       state=WeatherState(
         isLoading:false,
         errorMessage:e.toString().replaceAll('Exception:', ''),
