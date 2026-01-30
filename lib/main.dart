@@ -49,4 +49,3 @@ class WeatherStateWidget extends ConsumerWidget {
   }
 }
 
-

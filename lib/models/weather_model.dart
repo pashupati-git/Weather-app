@@ -28,12 +28,12 @@ class WeatherModel {
       cityName: json['name'] ?? 'Unknown',
       temperature:(json['main']['temp'] as num).toDouble(),
       description: json['weather'][0]['description']??'Unknown',
-      icon: json['weather']['icon']??'01d',
+      icon: json['weather'][0]['icon']??'01d',
       feelsLike:(json['main']['feels_like'] as num).toDouble(),
       humidity:json['main']['humidity']??0,
       windSpeed:(json['wind']['speed']as num).toDouble() ,
       pressure:json['main']['pressure']?? 0,
-      dateTime:DateTime.fromMicrosecondsSinceEpoch(json['dt']*1000),
+      dateTime:DateTime.fromMillisecondsSinceEpoch(json['dt']*1000),
     );
   }
 
